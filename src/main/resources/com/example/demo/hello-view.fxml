@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Файл">
+                  <items>
+                    <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#onOpenFileButtonClicked" text="Открыть" />
+                        <MenuItem fx:id="saveFile" mnemonicParsing="false" onAction="#onSaveFileButtonClicked" text="Сохранить" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="О программе">
+                  <items>
+                    <MenuItem fx:id="about" mnemonicParsing="false" onAction="#onAboutButtonClicked" text="Справка" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Условия задачи">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="150.0" spacing="10.0" AnchorPane.leftAnchor="0.0">
+                           <children>
+                              <Label text="Число переменных">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Spinner fx:id="countVariables" editable="true" />
+                              <Label text="Число ограничений">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Spinner fx:id="countRestrictions" editable="true" />
+                              <ComboBox fx:id="minMax" prefWidth="150.0" promptText="Задача оптимизации">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ComboBox>
+                              <ComboBox fx:id="fraction" prefWidth="150.0" promptText="Вид дробей">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ComboBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="150.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="target" minHeight="-Infinity" prefHeight="60.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TableView>
+                              <TableView fx:id="restrictions" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                        <Button fx:id="apply" layoutX="25.0" layoutY="289.0" mnemonicParsing="false" onAction="#onApplyButtonClicked" text="Применить">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Симплекс метод">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <VBox prefHeight="344.0" prefWidth="675.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="answerSimplexText">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tableSimplex" prefHeight="342.0" prefWidth="675.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="673.0" layoutY="55.0" prefHeight="234.0" prefWidth="100.0" spacing="30.0" AnchorPane.leftAnchor="673.0" AnchorPane.topAnchor="55.0">
+                           <children>
+                              <Button fx:id="nextSimplex" disable="true" mnemonicParsing="false" onAction="#onNextSimplexButtonClicked" text="Вперёд" />
+                              <Button fx:id="answerSimplex" disable="true" mnemonicParsing="false" onAction="#onAnswerSimplexButtonClicked" text="Ответ" />
+                              <Button fx:id="backSimplex" disable="true" mnemonicParsing="false" onAction="#onBackSimplexButtonClicked" text="Назад" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Метод искусственного базиса">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="346.0" prefWidth="673.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="answerBasisText">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tableBasis" prefHeight="320.0" prefWidth="645.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="673.0" layoutY="55.0" prefHeight="234.0" prefWidth="100.0" spacing="30.0" AnchorPane.leftAnchor="673.0" AnchorPane.topAnchor="55.0">
+                           <children>
+                              <Button fx:id="nextBasis" disable="true" mnemonicParsing="false" onAction="#onNextBasisButtonClicked" text="Вперёд" />
+                              <Button fx:id="answerBasis" disable="true" mnemonicParsing="false" onAction="#onAnswerBasisButtonClicked" text="Ответ" />
+                              <Button fx:id="backBasis" disable="true" mnemonicParsing="false" onAction="#onBackBasisButtonClicked" text="Назад" />
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
